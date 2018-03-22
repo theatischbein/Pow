@@ -76,7 +76,7 @@ animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 7.0
 } ]
 
 [node name="Player" type="RigidBody2D"]
@@ -100,6 +100,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+last_dir = 0
 
 [node name="Particles2D" type="Particles2D" parent="." index="0"]
 
@@ -127,6 +128,7 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
 
 frames = SubResource( 6 )
 animation = "default"
+playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 

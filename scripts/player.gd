@@ -9,17 +9,21 @@ const DIR = {
 const POWER_MAX = 800
 const POWER_MIN = 250
 
-export var last_dir = DIR.LEFT
+export var last_dir = DIR.RIGHT
 var force = Vector2()
-var direction_force = Vector2(0,0)
-var acc = 1000
-var max_move = 200
-var max_jump = 400
-var power = 250
+var direction_force = Vector2()
+var acc
+var max_move
+var max_jump
+var power
 
 
 func _ready():
-	pass
+	direction_force = Vector2(0,0)
+	acc = 1000
+	max_move = 200
+	max_jump = 400
+	power = 250
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_left")) :

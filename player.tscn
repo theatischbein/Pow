@@ -5,32 +5,32 @@
 [ext_resource path="res://asset/test.png" type="Texture" id=3]
 [ext_resource path="res://asset/test_1.png" type="Texture" id=4]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 0.420118, 0.757396 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.881657, 0.881657, 0.881657, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=2]
 
 flags = 4
-gradient = SubResource( 2 )
+gradient = SubResource( 1 )
 width = 2048
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=3]
 
 min_value = 0.0
 max_value = 1.0
 bake_resolution = 100
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
+[sub_resource type="CurveTexture" id=4]
 
 flags = 4
 width = 2048
-curve = SubResource( 5 )
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=5]
 
 render_priority = 0
 trail_divisor = 1
@@ -59,8 +59,8 @@ angle = 0.0
 angle_random = 0.0
 scale = 0.2
 scale_random = 0.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -70,7 +70,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color", "Gravity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=6]
 
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
@@ -79,7 +79,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[node name="Player" type="RigidBody2D" index="0"]
+[node name="Player" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -116,7 +116,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 4 )
+process_material = SubResource( 5 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -125,13 +125,13 @@ _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
-frames = SubResource( 1 )
+frames = SubResource( 6 )
 animation = "default"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 
 build_mode = 0
-polygon = PoolVector2Array( -10.0483, 32.0466, 5.37735, 32.0466, 7.72598, 9.36507, 13.2738, -2.89847, 15.9017, -8.73824, 15.0257, -16.6219, 2.76217, -19.2499, -7.16546, -18.3739, -16.2171, -13.4101, -18.261, -8.15427, -15.3412, 4.10927, -8.33342, 12.577 )
+polygon = PoolVector2Array( -8.33598, 31.5173, 7.57302, 31.6921, 7.72598, 9.36507, 13.2738, -2.89847, 15.9017, -8.73824, 15.0257, -16.6219, 2.76217, -19.2499, -7.16546, -18.3739, -16.2171, -13.4101, -18.261, -8.15427, -15.3412, 4.10927, -8.33342, 12.577 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 

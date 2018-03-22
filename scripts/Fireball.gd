@@ -5,7 +5,6 @@ const DIR = {
 	RIGHT = 1
 	}
 
-const SPEED = 400
 var offset_x = 50
 var velocity = Vector2(200,0)
 signal hit()
@@ -13,14 +12,14 @@ signal hit()
 func _ready():
 	pass
 		
-func shoot(var spawn, var dir):
+func shoot(var spawn, var dir, var power):
 	if (dir == DIR.LEFT):
 		spawn.x -= offset_x
-		velocity = Vector2(-SPEED,0)
+		velocity = Vector2(-power,0)
 		$AnimatedSprite.flip_h = true
 	elif (dir == DIR.RIGHT):
 		spawn.x += offset_x
-		velocity = Vector2(SPEED,0)
+		velocity = Vector2(power,0)
 		$AnimatedSprite.flip_h = false
 	
 	position = spawn

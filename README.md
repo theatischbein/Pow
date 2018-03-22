@@ -14,5 +14,7 @@ User the keypad to move the character. Enter will fire a fireball.
 | (hold) Up | Fly up |
 | Enter | Fireball |
 
+holding Enter will increase Fireball's speed. (May increase damage too ?)
+
 ## Bugs
 There are a lot. Just using git for sharing and versioning. Feel free to add Issues.

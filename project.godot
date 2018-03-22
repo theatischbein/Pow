@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="pow"
-run/main_scene="res://test.tscn"
+run/main_scene="res://scene/Level.tscn"
 config/icon="res://icon.png"
 
 [rendering]

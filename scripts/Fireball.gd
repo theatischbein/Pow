@@ -38,9 +38,9 @@ func contact(body):
 	$Explosion.start()
 	if (body.get_signal_connection_list("took_damage") != []):
 		body.emit_signal("took_damage", body.health - damage)
-	else:
-		print("no player has hit?")
-		print(body.get_signal_connection_list("took_damage"))
+	#else:
+		#print("no player has hit?")
+		#print(body.get_signal_connection_list("took_damage"))
 	
 func _on_Timer_timeout():
 	destroy()

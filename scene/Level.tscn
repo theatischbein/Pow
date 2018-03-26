@@ -40,6 +40,8 @@ __meta__ = {
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 79.0468, 186.555 )
+max_power = 800
+min_power = 250
 last_dir = 1
 
 [node name="Fireballs" type="Timer" parent="." index="2"]
@@ -47,7 +49,7 @@ last_dir = 1
 process_mode = 1
 wait_time = 2.0
 one_shot = false
-autostart = true
+autostart = false
 script = ExtResource( 4 )
 Fireball = ExtResource( 5 )
 
@@ -68,7 +70,6 @@ texture = ExtResource( 6 )
 
 [node name="HUD-Layer" type="CanvasLayer" parent="." index="4"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -77,12 +78,16 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="HUD" parent="HUD-Layer" index="0" instance=ExtResource( 7 )]
 
-margin_right = 1024.0
-margin_bottom = 45.0
+margin_right = 1.0
+margin_bottom = -3.0
 script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
 
 [connection signal="die" from="Player" to="HUD-Layer/HUD" method="_on_Player_die"]
+
+[connection signal="load_power" from="Player" to="HUD-Layer/HUD" method="_on_Player_load_power"]
+
+[connection signal="shoot" from="Player" to="HUD-Layer/HUD" method="_on_Player_shoot"]
 
 [connection signal="took_damage" from="Player" to="HUD-Layer/HUD" method="_on_Player_took_damage"]
 

@@ -3,16 +3,19 @@ extends RigidBody2D
 export (PackedScene) var Fireball
 export var max_health = 100
 export var health = 50
+export var max_power = 800
+export var min_power = 250
 
 signal die()
 signal took_damage()
+signal load_power()
+signal shoot()
 
 const DIR = {
 	LEFT = 0, 
 	RIGHT = 1
 	}
-const POWER_MAX = 800
-const POWER_MIN = 250
+
 
 export var last_dir = DIR.RIGHT
 var force = Vector2()
@@ -41,13 +44,16 @@ func _process(delta):
 		$AnimatedSprite.flip_h = false;
 		
 	if (Input.is_action_pressed("ui_accept")):
-		if(power < POWER_MAX):
+		if(power < max_power):
 			power += 10
+			emit_signal("load_power", power)
 	if (Input.is_action_just_released("ui_accept")):
 		var fire = Fireball.instance()
 		get_parent().add_child(fire)
 		fire.shoot(position, last_dir, power)
-		power = POWER_MIN
+		power = min_power		
+		emit_signal("load_power", power)
+		emit_signal("shoot")
 	
 func update_health(new_health):
 	health = new_health

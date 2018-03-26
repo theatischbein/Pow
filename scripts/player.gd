@@ -54,6 +54,7 @@ func _process(delta):
 		power = min_power		
 		emit_signal("load_power", power)
 		emit_signal("shoot")
+			
 	
 func update_health(new_health):
 	health = new_health

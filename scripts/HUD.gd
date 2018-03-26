@@ -39,8 +39,8 @@ func update_power(power):
 func _on_Player_load_power(power):
 	if ($VBoxContainer/Power.visible != true):
 		$VBoxContainer/Power.show()
-	else:
-		print($VBoxContainer/Power.visible)
+#	else:
+#		print($VBoxContainer/Power.visible)
 	update_power(power)
 
 

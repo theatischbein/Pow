@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://asset/tiles/tiles_polygon.res" type="TileSet" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://asset/bg.png" type="Texture" id=6]
 [ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=8]
+[ext_resource path="res://scene/Inventory.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/Inventory.gd" type="Script" id=10]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -40,6 +42,7 @@ __meta__ = {
 [node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 79.0468, 186.555 )
+_sections_unfolded = [ "Pause" ]
 max_power = 800
 min_power = 250
 last_dir = 1
@@ -82,6 +85,13 @@ margin_right = 1.0
 margin_bottom = -3.0
 script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+
+[node name="Inventory" parent="HUD-Layer" index="1" instance=ExtResource( 9 )]
+
+pause_mode = 2
+visible = false
+script = ExtResource( 10 )
+_sections_unfolded = [ "Margin", "Pause" ]
 
 [connection signal="die" from="Player" to="HUD-Layer/HUD" method="_on_Player_die"]
 

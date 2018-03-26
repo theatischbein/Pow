@@ -95,7 +95,7 @@ flags = 4
 width = 2048
 curve = SubResource( 7 )
 
-[node name="Fireball" type="RigidBody2D" index="0"]
+[node name="Fireball" type="RigidBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -128,7 +128,6 @@ polygon = PoolVector2Array( -1.89517, 17.1607, 9.46843, 16.6362, 14.1887, 11.741
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
 playing = true
 
 [node name="SelfDestroy" type="Timer" parent="." index="2"]

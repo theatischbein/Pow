@@ -49,8 +49,8 @@ func _process(delta):
 		fire.shoot(position, last_dir, power)
 		power = POWER_MIN
 	
-func update_health():
-	pass
+func update_health(new_health):
+	health = new_health
 	
 func _integrate_forces(state):
 	
@@ -86,5 +86,14 @@ func _integrate_forces(state):
 	
 	state.set_linear_velocity(force)
 
-func _on_Player_took_damage():
-	emit_signal("took_damage", health)
+func _on_Player_took_damage(new_health):
+	if(new_health > 0):
+		update_health(new_health)
+	else:
+		emit_signal("die")
+
+
+func _on_Player_die():
+	queue_free()
+	##DEBUG
+	$"../Fireballs".stop()

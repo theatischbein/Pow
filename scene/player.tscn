@@ -166,6 +166,8 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Editor", "Smoothing" ]
 
+[connection signal="die" from="." to="." method="_on_Player_die"]
+
 [connection signal="took_damage" from="." to="." method="_on_Player_took_damage"]
 
 

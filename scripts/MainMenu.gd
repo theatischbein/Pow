@@ -1,4 +1,4 @@
-extends MarginContainer
+extends VBoxContainer
 
 var index = 0
 
@@ -17,11 +17,11 @@ func _process(delta):
 			pass
 		
 func next():
-	if (index == 0):	
-		$HBoxContainer/VBoxContainer/Menu/SelectBox/Selected.hide()
-		$HBoxContainer/VBoxContainer/Menu/StartBox/Selected.show()
+	if (index == 0):
+		$SelectBox/Selected.visible = false
+		$StartBox/Selected.visible = true
 		index = 1
 	elif (index == 1):
-		$HBoxContainer/VBoxContainer/Menu/SelectBox/Selected.show()
-		$HBoxContainer/VBoxContainer/Menu/StartBox/Selected.hide()
+		$SelectBox/Selected.visible = true
+		$StartBox/Selected.visible = false
 		index = 0

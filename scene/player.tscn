@@ -5,7 +5,6 @@
 [ext_resource path="res://asset/test.png" type="Texture" id=3]
 [ext_resource path="res://asset/test_1.png" type="Texture" id=4]
 
-
 [sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 0.420118, 0.757396 )
@@ -80,7 +79,7 @@ animations = [ {
 "speed": 7.0
 } ]
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -101,6 +100,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+Fireball = null
 last_dir = 0
 
 [node name="Particles2D" type="Particles2D" parent="." index="0"]
@@ -149,7 +149,7 @@ limit_bottom = 10000000
 limit_smoothed = false
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
-smoothing_enabled = false
+smoothing_enabled = true
 smoothing_speed = 5.0
 offset_v = 0.0
 offset_h = 0.0
@@ -160,5 +160,6 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Editor", "Smoothing" ]
 
 

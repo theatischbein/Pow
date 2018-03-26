@@ -5,7 +5,6 @@
 [ext_resource path="res://asset/projectiles/fireball_2.png" type="Texture" id=3]
 [ext_resource path="res://asset/projectiles/fireball_exp.png" type="Texture" id=4]
 
-
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -118,6 +117,7 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Applied Forces", "Linear", "Transform" ]
+damage = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -128,6 +128,8 @@ polygon = PoolVector2Array( -1.89517, 17.1607, 9.46843, 16.6362, 14.1887, 11.741
 
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
+playing = true
 
 [node name="SelfDestroy" type="Timer" parent="." index="2"]
 

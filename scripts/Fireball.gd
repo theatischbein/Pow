@@ -5,6 +5,7 @@ const DIR = {
 	RIGHT = 1
 	}
 
+export var damage = 10
 var offset_x = 50
 var velocity = Vector2(200,0)
 signal hit()
@@ -35,6 +36,11 @@ func contact(body):
 	$CollisionPolygon2D.hide()
 	$Particles2D.emitting = true
 	$Explosion.start()
+	if (body.get_signal_connection_list("took_damage") != []):
+		body.emit_signal("took_damage", body.health - damage)
+	else:
+		print("no player has hit?")
+		print(body.get_signal_connection_list("took_damage"))
 	
 func _on_Timer_timeout():
 	destroy()

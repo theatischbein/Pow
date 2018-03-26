@@ -1,6 +1,11 @@
 extends RigidBody2D
 
 export (PackedScene) var Fireball
+export var max_health = 100
+export var health = 50
+
+signal die()
+signal took_damage()
 
 const DIR = {
 	LEFT = 0, 
@@ -24,6 +29,7 @@ func _ready():
 	max_move = 200
 	max_jump = 400
 	power = 250
+	health = 100
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_left")) :
@@ -42,6 +48,9 @@ func _process(delta):
 		get_parent().add_child(fire)
 		fire.shoot(position, last_dir, power)
 		power = POWER_MIN
+	
+func update_health():
+	pass
 	
 func _integrate_forces(state):
 	
@@ -76,3 +85,6 @@ func _integrate_forces(state):
 		force.y = -max_jump
 	
 	state.set_linear_velocity(force)
+
+func _on_Player_took_damage():
+	emit_signal("took_damage", health)

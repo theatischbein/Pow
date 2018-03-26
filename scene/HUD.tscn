@@ -144,7 +144,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer/Bars/Bar" index="1"]
+[node name="Progress" type="TextureProgress" parent="HBoxContainer/Bars/Bar" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0

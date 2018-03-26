@@ -1,26 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
-[ext_resource path="res://asset/bg.png" type="Texture" id=2]
-[ext_resource path="res://asset/tiles/tiles_polygon.res" type="TileSet" id=3]
-[ext_resource path="res://scene/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/Fireball.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://asset/tiles/tiles_polygon.res" type="TileSet" id=2]
+[ext_resource path="res://scene/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://asset/bg.png" type="Texture" id=4]
+[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=6]
+[ext_resource path="res://scene/Fireball.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
-
-position = Vector2( 510.786, 207.394 )
-scale = Vector2( 1.71212, 1.43554 )
-texture = ExtResource( 2 )
-
-[node name="TileMap" type="TileMap" parent="." index="1"]
+[node name="TileMap" type="TileMap" parent="." index="0"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
@@ -41,22 +36,54 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 79.0468, 186.555 )
-Fireball = ExtResource( 5 )
 last_dir = 1
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 6 )]
+[node name="Background-Layer" type="CanvasLayer" parent="." index="2"]
 
-margin_left = -272.0
-margin_top = -12.0
-margin_right = 51.0
-margin_bottom = 33.0
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Fireball" parent="." index="4" instance=ExtResource( 5 )]
+[node name="Background" type="Sprite" parent="Background-Layer" index="0"]
 
-visible = false
-position = Vector2( -166.556, 210.97 )
+position = Vector2( 510.786, 207.394 )
+scale = Vector2( 1.71212, 1.43554 )
+texture = ExtResource( 4 )
+
+[node name="HUD-Layer" type="CanvasLayer" parent="." index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="HUD" parent="HUD-Layer" index="0" instance=ExtResource( 5 )]
+
+margin_right = 1024.0
+margin_bottom = 45.0
+script = ExtResource( 6 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+
+[node name="Fireball" parent="." index="4" instance=ExtResource( 7 )]
+
+position = Vector2( -113.572, 273.91 )
+
+[node name="Fireball2" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( -146.976, 188.731 )
+
+[node name="Fireball3" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( -173.699, 242.176 )
+
+[connection signal="die" from="Player" to="HUD-Layer/HUD" method="_on_Player_die"]
+
+[connection signal="took_damage" from="Player" to="HUD-Layer/HUD" method="_on_Player_took_damage"]
 
 

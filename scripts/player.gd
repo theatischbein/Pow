@@ -25,6 +25,11 @@ var max_move
 var max_jump
 var power
 
+var player_data_path = "user://player_data.res"
+export var inventory = {}
+export var max_slots = 36
+onready var player_data = File_Handling.load_file(player_data_path)
+
 
 func _ready():
 	direction_force = Vector2(0,0)
@@ -33,6 +38,7 @@ func _ready():
 	max_jump = 400
 	power = 250
 	health = 100
+	load_data()
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_left")) :
@@ -104,3 +110,14 @@ func _on_Player_die():
 	queue_free()
 	##DEBUG
 	$"../Fireballs".stop()
+
+func load_data():
+	if (player_data == null):
+		var dict = {"inventory": {}}
+		for slot in range(0, max_slots-1):
+			dict["inventory"][String(slot)] = {"id" : "0", "amount" : 0}
+		File_Handling.write_file(player_data_path, dict)
+		inventory = dict["inventory"]
+	else:
+		inventory = player_data["inventory"]
+		

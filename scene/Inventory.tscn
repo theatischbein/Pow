@@ -16,9 +16,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Node" type="Node" parent="." index="0"]
-
-[node name="CenterContainer" type="CenterContainer" parent="." index="1"]
+[node name="CenterContainer" type="CenterContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -80,11 +78,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 408.0
+margin_left = 283.0
 margin_top = 200.0
-margin_right = 608.0
+margin_right = 733.0
 margin_bottom = 400.0
-rect_min_size = Vector2( 200, 200 )
+rect_min_size = Vector2( 450, 200 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
@@ -95,9 +93,9 @@ size_flags_vertical = 1
 items = [  ]
 select_mode = 1
 allow_reselect = true
-auto_height = true
 max_columns = 6
 icon_mode = 1
+icon_scale = 0.7
 fixed_icon_size = Vector2( 0, 0 )
 _sections_unfolded = [ "Columns", "Icon", "Rect" ]
 

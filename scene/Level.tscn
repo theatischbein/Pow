@@ -11,8 +11,7 @@
 [ext_resource path="res://scene/Inventory.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=10]
 
-
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -47,6 +46,10 @@ _sections_unfolded = [ "Pause" ]
 max_power = 800
 min_power = 250
 last_dir = 1
+inventory = {
+
+}
+max_slots = 36
 
 [node name="Fireballs" type="Timer" parent="." index="2"]
 

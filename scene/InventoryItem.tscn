@@ -3,7 +3,7 @@
 [ext_resource path="res://asset/inventory/empty_slot.png" type="Texture" id=1]
 [ext_resource path="res://scripts/InventoryItem.gd" type="Script" id=2]
 
-[node name="TextureRect" type="TextureRect" index="0"]
+[node name="Item" type="TextureRect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -11,6 +11,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -20,11 +21,42 @@ size_flags_vertical = 1
 texture = ExtResource( 1 )
 stretch_mode = 0
 script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
 itemName = ""
 type = 0
 stackable = false
 weight = 0.0
 price = 0
 amount = 0
+
+[node name="Amount" type="RichTextLabel" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 5.0
+margin_bottom = 5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "Caret", "Margin", "Rect", "Size Flags" ]
 
 

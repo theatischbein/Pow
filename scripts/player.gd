@@ -27,7 +27,7 @@ var power
 
 var player_data_path = "user://player_data.res"
 export var inventory = {}
-export var max_slots = 36
+export var max_slots = 30
 onready var player_data = File_Handling.load_file(player_data_path)
 
 
@@ -115,7 +115,7 @@ func load_data():
 	if (player_data == null):
 		var dict = {"inventory": {}}
 		for slot in range(0, max_slots-1):
-			dict["inventory"][String(slot)] = {"id" : "0", "amount" : 0}
+			dict["inventory"][String(slot)] = {"id" : 0, "amount" : 0}
 		File_Handling.write_file(player_data_path, dict)
 		inventory = dict["inventory"]
 	else:

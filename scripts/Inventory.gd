@@ -19,15 +19,18 @@ func _process(delta):
 
 func update_inventory():
 	for child in itemList.get_children():
+		itemList.remove_child(child)
 		child.queue_free()
-	
+		
 	for slot in range(0, player.max_slots-1):
 		var item = player.inventory[String(slot)]
 		var itemData = Inventory_DB.get_item(item["id"])
 		if (itemData == null):
 			print("itemData couldnt be loaded")
 			return
-		var icon = load(itemData["icon"])
+		var icon = null
+		if (itemData["icon"] != ""):
+			icon = load(itemData["icon"])
 		var amount = int(item["amount"])
 		
 		
@@ -35,10 +38,16 @@ func update_inventory():
 			amount = " "
 		var newItem = InventoryItem.instance()
 		newItem.amount = amount
-		newItem.texture = icon
+		if (icon != null):
+			newItem.texture = icon
+		else:
+			newItem.texture = null
 		newItem.itemName = itemData["name"]
 		newItem.weight = itemData["weight"]
 		newItem.price = itemData["price"]
 		newItem.stackable = itemData["stackable"]
+		
+		var text_amount = newItem.get_child(0)
+		text_amount.text = String(amount)
 		itemList.add_child(newItem)
 

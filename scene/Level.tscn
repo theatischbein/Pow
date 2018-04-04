@@ -50,7 +50,7 @@ last_dir = 1
 inventory = {
 
 }
-max_slots = 36
+max_slots = 30
 
 [node name="Fireballs" type="Timer" parent="." index="2"]
 

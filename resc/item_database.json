@@ -1,7 +1,7 @@
 {
     "0": {
         "name": "",
-        "icon": "res://asset/inventory/empty_slot.png",
+        "icon": "",
         "type": "misc",
         "stackable": false,
         "weight": 0.0,

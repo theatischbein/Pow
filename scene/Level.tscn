@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://resc/tiles_polygon.res" type="TileSet" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=8]
 [ext_resource path="res://scene/Inventory.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=10]
+[ext_resource path="res://scene/InventoryItem.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -96,6 +97,7 @@ pause_mode = 2
 visible = false
 script = ExtResource( 10 )
 _sections_unfolded = [ "Margin", "Pause" ]
+InventoryItem = ExtResource( 11 )
 
 [connection signal="die" from="Player" to="HUD-Layer/HUD" method="_on_Player_die"]
 

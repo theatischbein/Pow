@@ -1,7 +1,9 @@
 extends MarginContainer
 
 onready var player = get_node("../../Player")
-onready var itemlist = get_node("CenterContainer/ItemList")
+onready var itemList = get_node("CenterContainer/GridContainer")
+export (PackedScene) var InventoryItem
+
 func _ready():
 	pass
 
@@ -16,7 +18,9 @@ func _process(delta):
 			get_tree().paused = true
 
 func update_inventory():
-	itemlist.clear()
+	for child in itemList.get_children():
+		child.queue_free()
+	
 	for slot in range(0, player.max_slots-1):
 		var item = player.inventory[String(slot)]
 		var itemData = Inventory_DB.get_item(item["id"])
@@ -29,7 +33,12 @@ func update_inventory():
 		
 		if (item["id"] == 0):
 			amount = " "
-		itemlist.add_item(amount, icon)
-		itemlist.set_item_metadata(slot, itemData)
-		itemlist.set_item_text(slot, itemData["name"])
+		var newItem = InventoryItem.instance()
+		newItem.amount = amount
+		newItem.texture = icon
+		newItem.itemName = itemData["name"]
+		newItem.weight = itemData["weight"]
+		newItem.price = itemData["price"]
+		newItem.stackable = itemData["stackable"]
+		itemList.add_child(newItem)
 

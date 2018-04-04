@@ -9,12 +9,12 @@
     },
 	"1":
 	{
-		"name"	:	"A",
-		"icon"	:	"..",
-		"type"	:	"consumable",
-		"stackable": true,
-		"weight":	0.1,
-		"price" :	7
+		"name"	:	"SuperSword",
+		"icon"	:	"res://asset/inventory/test_slot.png",
+		"type"	:	"weapon",
+		"stackable": false,
+		"weight":	5.0,
+		"price" :	70
 	}
 
 }

@@ -12,7 +12,7 @@ func load_file(path):
 		return
 	if (!file.file_exists(path)):
 		print("error exists")
-		return 
+		return
 	file.open(path, File.READ)
 	
 	#load to dictonary
@@ -23,17 +23,18 @@ func load_file(path):
 
 func write_file(path, data):
 	if path == null or data == null:
-		return
+		print("error no data or no valid path")
+		return -1
 		
 	file.open(path, File.WRITE)
 	if (file == null):
 		print("file error")
-		return 
+		return -1
 		
 	if (data == null):
 		print("data null")
-		return
+		return -1
 	
 	file.store_line(to_json(data))
 	file.close()
-	return
+	return 0

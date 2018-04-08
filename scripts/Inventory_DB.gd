@@ -32,4 +32,3 @@ func get_item(id):
 		return
 	itemData[String(id)]["id"] = String(id)
 	return itemData[String(id)]
-	

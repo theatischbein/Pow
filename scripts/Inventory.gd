@@ -42,6 +42,7 @@ func update_inventory():
 			newItem.texture = icon
 		else:
 			newItem.texture = null
+		newItem.id = itemData["id"]
 		newItem.itemName = itemData["name"]
 		newItem.weight = itemData["weight"]
 		newItem.price = itemData["price"]
@@ -51,3 +52,5 @@ func update_inventory():
 		text_amount.text = String(amount)
 		itemList.add_child(newItem)
 
+func add_item(item_id):
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://resc/tiles_polygon.res" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scene/Inventory.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=10]
 [ext_resource path="res://scene/InventoryItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/LevelItem.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 
@@ -40,7 +41,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Player" parent="." index="1" groups=[
+"Entities",
+] instance=ExtResource( 3 )]
 
 position = Vector2( 79.0468, 186.555 )
 _sections_unfolded = [ "Pause" ]
@@ -78,6 +81,7 @@ texture = ExtResource( 6 )
 
 [node name="HUD-Layer" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -99,6 +103,12 @@ script = ExtResource( 10 )
 _sections_unfolded = [ "Margin", "Pause" ]
 InventoryItem = ExtResource( 11 )
 
+[node name="LevelItem" parent="." index="5" instance=ExtResource( 12 )]
+
+position = Vector2( 327.85, 450.283 )
+contacts_reported = 1
+contact_monitor = true
+
 [connection signal="die" from="Player" to="HUD-Layer/HUD" method="_on_Player_die"]
 
 [connection signal="load_power" from="Player" to="HUD-Layer/HUD" method="_on_Player_load_power"]
@@ -108,5 +118,7 @@ InventoryItem = ExtResource( 11 )
 [connection signal="took_damage" from="Player" to="HUD-Layer/HUD" method="_on_Player_took_damage"]
 
 [connection signal="timeout" from="Fireballs" to="Fireballs" method="_on_Fireballs_timeout"]
+
+[connection signal="body_entered" from="LevelItem" to="Player" method="_on_LevelItem_body_entered"]
 
 

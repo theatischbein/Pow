@@ -6,6 +6,7 @@ const TYPE = {
 	weapon = 2
 	}
 
+export var id = 0
 export var itemName = ""
 export var type = TYPE.misc
 export var stackable = false

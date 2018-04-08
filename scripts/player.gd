@@ -121,3 +121,19 @@ func load_data():
 	else:
 		inventory = player_data["inventory"]
 		
+func pickup_item(item_id):
+	print("test")
+	for slot in range(0, max_slots-1):
+		if (inventory[String(slot)]["id"] == 0):
+			inventory[String(slot)]["id"] = item_id
+			inventory[String(slot)]["amount"] = 1
+			print(File_Handling.write_file(player_data_path, {"inventory": inventory}))
+			break
+	print("done ?")
+	
+
+func _on_LevelItem_body_entered(body):
+	if (get_tree().get_nodes_in_group("Entities").has(body)):
+		pickup_item($"../LevelItem/Item".id)
+		$"../LevelItem".hide()
+		
